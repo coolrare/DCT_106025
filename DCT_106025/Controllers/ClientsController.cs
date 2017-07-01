@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DCT_106025.Models;
 using DCT_106025.ActionFilters;
+using System.Web.Http.Results;
 
 namespace DCT_106025.Controllers
 {
@@ -128,7 +129,7 @@ namespace DCT_106025.Controllers
             db.Client.Add(client);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = client.ClientId }, client);
+            return CreatedAtRoute("GetClientById", new { id = client.ClientId }, client);
         }
 
         // DELETE: api/Clients/5
