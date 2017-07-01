@@ -11,9 +11,11 @@ using System.Web.Http.Description;
 using DCT_106025.Models;
 using DCT_106025.ActionFilters;
 using System.Web.Http.Results;
+using System.Web.Http.Cors;
 
 namespace DCT_106025.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class ClientsController : ApiController
     {
         private FabricsEntities db = new FabricsEntities();
