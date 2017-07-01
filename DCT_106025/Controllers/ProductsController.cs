@@ -110,7 +110,7 @@ namespace DCT_106025.Controllers
             db.Product.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("GetProductById", new { id = product.ProductId }, product);
+            return CreatedAtRoute("DefaultApi", new { controller = "Products", id = product.ProductId }, product);
         }
 
         // DELETE: api/Products/5
