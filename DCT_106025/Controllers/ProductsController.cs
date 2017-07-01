@@ -40,7 +40,7 @@ namespace DCT_106025.Controllers
         /// <param name="id">ProductId</param>
         /// <returns></returns>
         [ResponseType(typeof(Product))]
-        [Route("{id}")]
+        [Route("{id}", Name = "GetProductById")]
         public IHttpActionResult GetProduct(int id)
         {
             Product product = db.Product.Find(id);
@@ -110,7 +110,7 @@ namespace DCT_106025.Controllers
             db.Product.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
+            return CreatedAtRoute("GetProductById", new { id = product.ProductId }, product);
         }
 
         // DELETE: api/Products/5
