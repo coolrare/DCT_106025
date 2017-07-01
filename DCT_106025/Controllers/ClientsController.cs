@@ -16,6 +16,7 @@ using System.Web.Http.Cors;
 namespace DCT_106025.Controllers
 {
     [EnableCors("*", "*", "*")]
+    [Authorize(Roles = "admin")]
     public class ClientsController : ApiController
     {
         private FabricsEntities db = new FabricsEntities();
