@@ -123,7 +123,7 @@ namespace DCT_106025.Controllers
         // POST: api/Clients
         [ResponseType(typeof(Client))]
         [Route("clients")]
-        [ValidateModel]
+        [MyException]
         public IHttpActionResult PostClient(Client client)
         {
             db.Client.Add(client);

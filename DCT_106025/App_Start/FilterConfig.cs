@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using DCT_106025.ActionFilters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace DCT_106025
@@ -7,7 +8,8 @@ namespace DCT_106025
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new MyExceptionAttribute());
+            //filters.Add(new HandleErrorAttribute());
         }
     }
 }
