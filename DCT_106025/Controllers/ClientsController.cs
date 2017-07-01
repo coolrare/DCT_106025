@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using DCT_106025.Models;
+using DCT_106025.ActionFilters;
 
 namespace DCT_106025.Controllers
 {
@@ -61,7 +62,7 @@ namespace DCT_106025.Controllers
         [Route("clients/{id:int}/orders/{oid:int}")]
         public IHttpActionResult GetOrdersByClientIdOrderId(int id, int oid)
         {
-            var orders= db.Order
+            var orders = db.Order
                 .Where(p => p.ClientId == id && p.OrderId == oid);
             return Ok(orders);
         }
@@ -120,13 +121,10 @@ namespace DCT_106025.Controllers
 
         // POST: api/Clients
         [ResponseType(typeof(Client))]
+        [Route("clients")]
+        [ValidateModel]
         public IHttpActionResult PostClient(Client client)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             db.Client.Add(client);
             db.SaveChanges();
 
