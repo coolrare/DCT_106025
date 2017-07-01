@@ -22,12 +22,21 @@ namespace DCT_106025.Controllers
         }
 
         // GET: api/Products
+        /// <summary>
+        /// 取得所有商品
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Product> GetProduct()
         {
             return db.Product;
         }
 
         // GET: api/Products/5
+        /// <summary>
+        /// 取得特定商品 By ID
+        /// </summary>
+        /// <param name="id">ProductId</param>
+        /// <returns></returns>
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
