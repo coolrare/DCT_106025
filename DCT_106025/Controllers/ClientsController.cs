@@ -29,15 +29,16 @@ namespace DCT_106025.Controllers
 
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
-        public IHttpActionResult GetClient(int id)
+        [Route("clients/{id:int}", Name = "GetClientById")]
+        public Client GetClient(int id)
         {
             Client client = db.Client.Find(id);
-            if (client == null)
-            {
-                return NotFound();
-            }
+            //if (client == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(client);
+            return client;
         }
 
         [Route("clients/{id:int}/orders")]
@@ -45,6 +46,12 @@ namespace DCT_106025.Controllers
         {
             var orders = db.Order
                 .Where(p => p.ClientId == id);
+
+            if (!orders.Any())
+            {
+                return RedirectToRoute("GetClientById", new { id = id });
+            }
+
             return Ok(orders);
         }
 
