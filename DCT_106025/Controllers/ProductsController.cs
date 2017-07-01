@@ -51,7 +51,7 @@ namespace DCT_106025.Controllers
             return Ok(product);
         }
 
-        [ResponseType(typeof(Product))]
+        [ResponseType(typeof(IQueryable<OrderLine>))]
         [Route("products/{id}/orderlines")]
         public IHttpActionResult GetProductOrderLines(int id)
         {
